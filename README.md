@@ -15,8 +15,8 @@ Definir el alcance del proyecto, público objetivo y crear el prototipo visual e
 
 ## 👥 Roles del equipo
 
-* **Líder técnico:** responsable del código y la integración.
-* **Diseñador UI:** encargado del diseño visual en Figma.
+* **Líder técnico:** Ninahuaman Yuto Anderson
+* **Diseñador UI:** Santos Sausnzabar Paulo
 
 ---
 
@@ -140,6 +140,7 @@ debugImplementation("androidx.compose.ui:ui-tooling")
 // Navigation Compose
 implementation("androidx.navigation:navigation-compose:2.8.3")
 ```
+
 
 ---
 
