@@ -1,4 +1,4 @@
-package com.bodeapp.navigation
+package com.bodeapp.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -6,9 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.bodeapp.cierre.compras.CierreScreen
-import com.bodeapp.ui.compras.CompraScreen
-import com.bodeapp.ui.home.HomeScreen
-import com.bodeapp.ui.productos.ProductoScreen
+import com.bodeapp.presentation.screens.CompraScreen
+import com.bodeapp.presentation.screens.HomeScreen
+import com.bodeapp.presentation.screens.ProductoScreen
 import com.bodeapp.ventas.productos.VentaScreen
 
 @Composable

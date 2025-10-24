@@ -1,4 +1,4 @@
-package com.bodeapp.ui.compras
+package com.bodeapp.presentation.screens
 
 import androidx.navigation.NavController
 

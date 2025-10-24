@@ -1,4 +1,4 @@
-package com.bodeapp.ui.home
+package com.bodeapp.presentation.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
