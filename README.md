@@ -60,3 +60,96 @@ Debe incluir **mínimo 5 pantallas**:
 * Repositorio en GitHub con este README inicial y el enlace al Figma.
 
 ---
+Perfecto 🙌 Aquí tienes tu **README actualizado para el Día 2**, manteniendo el mismo formato que usaste para el Día 1.
+Incluye la configuración del proyecto, la estructura base y las ramas en GitHub.
+
+---
+
+# 📦 BodeApp – Día 2: Configuración del Proyecto y Estructura Base
+
+**Curso:** Aplicaciones Móviles con Android (Kotlin + Jetpack Compose)
+**Duración total:** 6 días
+**Docente:** Juan León
+
+---
+
+## 🎯 Objetivo del Día 2
+
+Configurar el proyecto base en Android Studio, crear la estructura de paquetes y establecer la navegación inicial entre pantallas.
+
+---
+
+## ⚙️ Actividades realizadas
+
+* Creación del proyecto **BodeApp** con **Kotlin + Jetpack Compose**.
+* Configuración del **tema visual (Material 3)**.
+* Implementación de la **navegación inicial** con `Navigation Compose`.
+* Creación de pantallas vacías conectadas:
+
+  * Home
+  * Productos
+  * Ventas
+  * Compras
+  * Cierre de Caja
+* Estructura de paquetes organizada:
+
+  ```
+  com.bodeapp/
+  ├── data/
+  ├── model/
+  ├── navigation/
+  │   ├── AppNavigation.kt
+  │   └── HomeScreen.kt
+  ├── ui/
+  ├── util/
+  └── MainActivity.kt
+  ```
+* Integración de los **botones en HomeScreen** para navegar a cada pantalla.
+* Verificación de ejecución correcta de la navegación en emulador.
+
+---
+
+## 🌿 Ramas en GitHub
+
+Cada integrante del equipo trabaja en su propia rama para mantener un flujo limpio de desarrollo:
+
+| Rama                   | Descripción                                               |
+| ---------------------- | --------------------------------------------------------- |
+| `main`                 | Rama principal con el proyecto base y navegación inicial. |
+| `feature/home-ui`      | Desarrollo de la pantalla Home y flujo de botones.        |
+| `feature/productos-ui` | Desarrollo del formulario de productos.                   |
+| `feature/ventas-ui`    | Desarrollo de la pantalla de ventas.                      |
+| `feature/db-room`      | Configuración de base de datos local (Room).              |
+
+📘 Las ramas se crean desde GitHub seleccionando **“main” → “Create branch from main”**
+y nombrándolas según la funcionalidad o el integrante responsable.
+
+---
+
+## 🧱 Dependencias agregadas
+
+```kotlin
+// Jetpack Compose
+implementation("androidx.activity:activity-compose:1.9.2")
+implementation(platform("androidx.compose:compose-bom:2024.09.01"))
+implementation("androidx.compose.ui:ui")
+implementation("androidx.compose.material3:material3")
+implementation("androidx.compose.ui:ui-tooling-preview")
+debugImplementation("androidx.compose.ui:ui-tooling")
+
+// Navigation Compose
+implementation("androidx.navigation:navigation-compose:2.8.3")
+```
+
+---
+
+## 📁 Entregables del Día 2
+
+✅ Proyecto base funcional en Android Studio.
+✅ Navegación inicial entre pantallas implementada.
+✅ Ramas creadas en GitHub para desarrollo colaborativo.
+✅ README actualizado con estructura y dependencias.
+
+---
+
+¿Deseas que te lo prepare ya con formato Markdown (`README.md`) listo para copiar y pegar en GitHub?
