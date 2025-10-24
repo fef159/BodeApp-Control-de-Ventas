@@ -114,9 +114,7 @@ Cada integrante del equipo trabaja en su propia rama para mantener un flujo limp
 | ---------------------- | --------------------------------------------------------- |
 | `main`                 | Rama principal con el proyecto base y navegación inicial. |
 | `feature/home-ui`      | Desarrollo de la pantalla Home y flujo de botones.        |
-| `feature/productos-ui` | Desarrollo del formulario de productos.                   |
-| `feature/ventas-ui`    | Desarrollo de la pantalla de ventas.                      |
-| `feature/db-room`      | Configuración de base de datos local (Room).              |
+
 
 📘 Las ramas se crean desde GitHub seleccionando **“main” → “Create branch from main”**
 y nombrándolas según la funcionalidad o el integrante responsable.
