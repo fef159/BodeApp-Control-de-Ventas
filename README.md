@@ -114,6 +114,8 @@ Cada integrante del equipo trabaja en su propia rama para mantener un flujo limp
 | ---------------------- | --------------------------------------------------------- |
 | `main`                 | Rama principal con el proyecto base y navegación inicial. |
 | `feature/home-ui`      | Desarrollo de la pantalla Home y flujo de botones.        |
+| `feature/productos-ui` | Desarrollo del formulario de productos.                   |
+
 
 
 📘 Las ramas se crean desde GitHub seleccionando **“main” → “Create branch from main”**
@@ -147,5 +149,3 @@ implementation("androidx.navigation:navigation-compose:2.8.3")
 ✅ README actualizado con estructura y dependencias.
 
 ---
-
-¿Deseas que te lo prepare ya con formato Markdown (`README.md`) listo para copiar y pegar en GitHub?
