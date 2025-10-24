@@ -117,10 +117,6 @@ Cada integrante del equipo trabaja en su propia rama para mantener un flujo limp
 | `feature/productos-ui` | Desarrollo del formulario de productos.                   |
 
 
-
-📘 Las ramas se crean desde GitHub seleccionando **“main” → “Create branch from main”**
-y nombrándolas según la funcionalidad o el integrante responsable.
-
 ---
 
 ## 🧱 Dependencias agregadas
