@@ -53,13 +53,12 @@ Debe incluir **mínimo 5 pantallas**:
 * Cierre de Caja / Reportes
 
 ---
----
-
 
 ## 📁 Entregables del Día 1
 
 * Prototipo en Figma (link arriba).
 * Repositorio en GitHub con este README inicial y el enlace al Figma.
+
 
 ---
 
