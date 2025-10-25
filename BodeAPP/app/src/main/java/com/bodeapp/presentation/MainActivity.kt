@@ -15,9 +15,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BodeAppTheme {
-                // Fondo principal de la app
                 Surface(color = MaterialTheme.colorScheme.background) {
-                    // Llamamos al sistema de navegación
                     AppNavigation()
                 }
             }
