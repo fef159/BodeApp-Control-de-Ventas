@@ -145,3 +145,141 @@ implementation("androidx.navigation:navigation-compose:2.8.3")
 ✅ README actualizado con estructura y dependencias.
 
 ---
+
+
+# 📦 BodeApp – Día 3: Desarrollo de Interfaz (UI/UX)
+
+**Curso:** Aplicaciones Móviles con Android (Kotlin + Jetpack Compose)
+**Duración total:** 6 días
+**Docente:** Juan León
+
+---
+
+## 🎯 Objetivo del Día 3
+
+Desarrollar las **interfaces principales** de la aplicación BodeApp utilizando **Material Design 3**, aplicando componentes visuales modernos y funcionales.
+Los formularios permiten **escritura momentánea** con estado local mediante `remember`, que será reemplazado por persistencia real en los próximos días.
+
+---
+
+## ⚙️ Actividades realizadas
+
+* Implementación de las pantallas base con Jetpack Compose y Material 3:
+
+  * **Home:** menú principal con accesos a Productos, Ventas, Compras y Cierre.
+  * **Registro de Producto:** formulario con nombre, precio y stock inicial.
+  * **Ventas:** campos para producto, cantidad y subtotal.
+  * **Compras/Insumos:** formulario con producto, costo y cantidad.
+  * **Cierre de Caja:** muestra resumen de ventas, compras y utilidad.
+* Integración de la navegación entre pantallas con `NavHostController`.
+* Aplicación de **Material Design 3**: `Scaffold`, `TopAppBar`, `OutlinedTextField`, `Button`, `Surface`, `MaterialTheme`.
+* Formularios con **estado temporal editable** (`remember { mutableStateOf("") }`) para permitir escritura.
+* Proyecto estructurado con el patrón **MVVM** para las próximas etapas de desarrollo.
+
+---
+
+## 🧱 Estructura del proyecto
+
+```
+com.bodeapp/
+├── data/                   → Base de datos y entidades (próximo día)
+│   ├── dao/
+│   ├── db/
+│   └── model/
+│
+├── presentation/           → Capa de presentación (UI y navegación)
+│   ├── navigation/
+│   │   └── AppNavigation.kt
+│   └── screens/
+│       ├── HomeScreen.kt
+│       ├── ProductoScreen.kt
+│       ├── VentaScreen.kt
+│       ├── CompraScreen.kt
+│       └── CierreScreen.kt
+│
+├── repository/             → Conexión entre datos y UI (próximo día)
+├── ui/theme/               → Colores, tipografía y estilos de Material 3
+├── viewmodel/              → Lógica de presentación (a implementar)
+└── MainActivity.kt         → Punto de entrada de la aplicación
+```
+
+---
+
+## 🖥️ Pantallas implementadas
+
+| Pantalla              | Descripción                                             | Estado     |
+| --------------------- | ------------------------------------------------------- | ---------- |
+| 🏠 **Home**           | Menú con botones hacia cada módulo.                     | ✅ Completa |
+| 📦 **Productos**      | Formulario editable con nombre, precio y stock inicial. | ✅ Completa |
+| 💰 **Ventas**         | Campos para registrar producto, cantidad y subtotal.    | ✅ Completa |
+| 🧾 **Compras**        | Formulario para registrar producto, costo y cantidad.   | ✅ Completa |
+| 💼 **Cierre de Caja** | Resumen con ventas, compras y utilidad.                 | ✅ Completa |
+
+---
+
+## ⚙️ Dependencias utilizadas
+
+Basadas en el archivo `build.gradle.kts` actual del proyecto 👇
+
+```kotlin
+// Jetpack Compose + Material 3
+implementation(libs.androidx.core.ktx)
+implementation(libs.androidx.lifecycle.runtime.ktx)
+implementation(libs.androidx.activity.compose)
+implementation(platform(libs.androidx.compose.bom))
+implementation(libs.androidx.ui)
+implementation(libs.androidx.ui.graphics)
+implementation(libs.androidx.ui.tooling.preview)
+implementation(libs.androidx.material3)
+
+// Navigation Compose
+implementation("androidx.navigation:navigation-compose:2.8.3")
+
+// Room (base de datos local - se usará en el Día 4)
+val roomVersion = "2.6.1"
+implementation("androidx.room:room-runtime:$roomVersion")
+kapt("androidx.room:room-compiler:$roomVersion")
+implementation("androidx.room:room-ktx:$roomVersion")
+
+// ViewModel + ciclo de vida
+implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
+implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.6")
+
+// Corrutinas
+implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+
+// Depuración y pruebas
+debugImplementation(libs.androidx.ui.tooling)
+debugImplementation(libs.androidx.ui.test.manifest)
+testImplementation(libs.junit)
+androidTestImplementation(libs.androidx.junit)
+androidTestImplementation(libs.androidx.espresso.core)
+androidTestImplementation(platform(libs.androidx.compose.bom))
+androidTestImplementation(libs.androidx.ui.test.junit4)
+```
+
+---
+
+## 🌿 Ramas en GitHub
+
+| Rama                   | Descripción                                              |
+| ---------------------- | -------------------------------------------------------- |
+| `main`                 | Interfaz completa con navegación funcional y Material 3. |
+| `feature/home-ui`      | Pantalla Home con botones de navegación.                 |
+| `feature/productos-ui` | Formulario editable de registro de producto.             |
+| `feature/ventas-ui`    | Interfaz de registro de ventas.                          |
+| `feature/compras-ui`   | Formulario de compras/insumos.                           |
+| `feature/cierre-ui`    | Pantalla del resumen de cierre de caja.                  |
+
+---
+
+## 🧩 Entregables del Día 3
+
+✅ Interfaz completa y navegable con Material 3.
+✅ Formularios funcionales con escritura momentánea (`remember`).
+✅ Navegación entre pantallas con `NavHostController`.
+✅ Estructura organizada bajo el patrón **MVVM**.
+✅ Proyecto preparado para implementar persistencia con **Room** y **ViewModel** en el Día 4.
+
+---
+
