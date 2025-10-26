@@ -283,3 +283,124 @@ androidTestImplementation(libs.androidx.ui.test.junit4)
 
 ---
 
+# 📦 BodeApp – Día 4: Integración con Base de Datos Local (Room)
+
+**Curso:** Aplicaciones Móviles con Android (Kotlin + Jetpack Compose)
+**Duración total:** 6 días
+**Docente:** Juan León
+
+---
+
+## 🎯 Objetivo del Día 4
+
+Conectar la interfaz de usuario con modelos de datos reales usando **Room Database**.
+Implementar operaciones **CRUD** (crear, leer, actualizar, disminuir stock y aumentar stock) para los productos registrados.
+
+---
+
+## ⚙️ Actividades realizadas
+
+* Configuración de la **base de datos local Room** (`BodeAppDatabase`).
+* Creación de las **entidades**:
+
+  * `Producto`
+  * `Venta`
+  * `Compra`
+* Implementación del **DAO** (`ProductosDao`) con métodos:
+
+  * `insert()`, `update()`, `delete()`
+  * `aumentarStock()` y `disminuirStock()`
+* Implementación del **Repositorio (`ProductoRepository`)** para manejar la comunicación entre Room y el ViewModel.
+* Creación del **InstructorViewModel**, utilizando `StateFlow` para actualizar la UI en tiempo real.
+* Implementación del **InstructorViewModelFactory** para conectar correctamente la BD con el ViewModel.
+* Conexión total entre **UI ↔ ViewModel ↔ Repository ↔ Room**.
+* Adaptación de las pantallas con lógica real:
+
+  * **Productos:** registrar, listar y mostrar stock actualizado.
+  * **Ventas:** reducir stock al registrar una venta.
+  * **Compras:** aumentar stock al registrar una compra.
+  * **Cierre:** mostrar resumen del inventario y utilidad estimada.
+* Verificación de persistencia real (datos se mantienen al cerrar la app).
+
+---
+
+## 🧱 Estructura del proyecto
+
+```
+com.bodeapp/
+├── data/
+│   ├── dao/
+│   │   └── ProductosDao.kt
+│   ├── db/
+│   │   └── BodeAppDatabase.kt
+│   └── model/
+│       ├── Producto.kt
+│       ├── Venta.kt
+│       └── Compra.kt
+│
+├── repository/
+│   └── ProductoRepository.kt
+│
+├── viewmodel/
+│   ├── InstructorViewModel.kt
+│   └── InstructorViewModelFactory.kt
+│
+├── presentation/
+│   └── screens/
+│       ├── ProductoScreen.kt
+│       ├── VentasScreen.kt
+│       ├── ComprasScreen.kt
+│       └── CierreScreen.kt
+│
+├── navigation/
+│   ├── AppNavigation.kt
+│   └── HomeScreen.kt
+│
+└── MainActivity.kt
+```
+
+---
+
+## 🧩 Dependencias principales
+
+```kotlin
+// Room Database
+implementation("androidx.room:room-runtime:2.6.1")
+kapt("androidx.room:room-compiler:2.6.1")
+implementation("androidx.room:room-ktx:2.6.1")
+
+// Jetpack Compose + Material 3
+implementation("androidx.activity:activity-compose:1.9.2")
+implementation(platform("androidx.compose:compose-bom:2024.09.01"))
+implementation("androidx.compose.material3:material3")
+implementation("androidx.navigation:navigation-compose:2.8.3")
+
+// Lifecycle y ViewModel
+implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
+implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.6")
+implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+```
+
+---
+
+## 🧠 Pruebas realizadas
+
+✅ **Inserción:** los productos se guardan correctamente en la base de datos.
+✅ **Persistencia:** los datos permanecen tras cerrar la app.
+✅ **Actualización:** las ventas y compras modifican el stock en tiempo real.
+✅ **Reactividad:** los cambios en Room se reflejan automáticamente en Compose.
+✅ **Integración completa:** UI ↔ ViewModel ↔ Repository ↔ Room funcionando sin errores.
+
+---
+
+## 📁 Entregables del Día 4
+
+✅ Base de datos Room totalmente funcional.
+✅ Pantallas conectadas a datos reales (Productos, Ventas, Compras, Cierre).
+✅ Persistencia y actualización en tiempo real de stock.
+✅ Pruebas de inserción y modificación exitosas.
+✅ README actualizado con estructura y dependencias.
+
+---
+
+
