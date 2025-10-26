@@ -18,73 +18,41 @@ import com.bodeapp.viewmodel.InstructorViewModelFactory
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProductoScreen(navController: NavController) {
-
-    // ✅ Inicializamos el ViewModel con Factory para que tenga acceso a la BD
     val context = LocalContext.current
     val factory = remember { InstructorViewModelFactory(context) }
     val viewModel: InstructorViewModel = viewModel(factory = factory)
 
-    // Estados locales del formulario
     var nombre by remember { mutableStateOf("") }
     var precio by remember { mutableStateOf("") }
     var stock by remember { mutableStateOf("") }
-
-    // Observamos los productos desde Room
     val productos by viewModel.productos.collectAsState()
 
-    Scaffold(
-        topBar = {
-            CenterAlignedTopAppBar(
-                title = { Text("Registrar Producto") }
-            )
-        }
-    ) { padding ->
+    Scaffold(topBar = {
+        CenterAlignedTopAppBar(title = { Text("Registrar Producto") })
+    }) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
                 .padding(20.dp),
-            verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // 🧾 Campos del formulario
-            OutlinedTextField(
-                value = nombre,
-                onValueChange = { nombre = it },
-                label = { Text("Nombre del producto") },
-                modifier = Modifier.fillMaxWidth()
-            )
+            OutlinedTextField(value = nombre, onValueChange = { nombre = it }, label = { Text("Nombre") }, modifier = Modifier.fillMaxWidth())
             Spacer(modifier = Modifier.height(12.dp))
-
-            OutlinedTextField(
-                value = precio,
-                onValueChange = { precio = it },
-                label = { Text("Precio (S/.)") },
-                modifier = Modifier.fillMaxWidth(),
-                singleLine = true
-            )
+            OutlinedTextField(value = precio, onValueChange = { precio = it }, label = { Text("Precio") }, modifier = Modifier.fillMaxWidth())
             Spacer(modifier = Modifier.height(12.dp))
-
-            OutlinedTextField(
-                value = stock,
-                onValueChange = { stock = it },
-                label = { Text("Stock inicial") },
-                modifier = Modifier.fillMaxWidth(),
-                singleLine = true
-            )
-            Spacer(modifier = Modifier.height(24.dp))
+            OutlinedTextField(value = stock, onValueChange = { stock = it }, label = { Text("Stock inicial") }, modifier = Modifier.fillMaxWidth())
+            Spacer(modifier = Modifier.height(16.dp))
 
             Button(
                 onClick = {
-                    if (nombre.isNotBlank() && precio.isNotBlank() && stock.isNotBlank()) {
+                    if (nombre.isNotBlank()) {
                         viewModel.addProducto(
-                            nombre = nombre,
-                            precio = precio.toDoubleOrNull() ?: 0.0,
-                            stock = stock.toIntOrNull() ?: 0
+                            nombre,
+                            precio.toDoubleOrNull() ?: 0.0,
+                            stock.toIntOrNull() ?: 0
                         )
-                        nombre = ""
-                        precio = ""
-                        stock = ""
+                        nombre = ""; precio = ""; stock = ""
                     }
                 },
                 modifier = Modifier.fillMaxWidth()
@@ -92,41 +60,16 @@ fun ProductoScreen(navController: NavController) {
                 Text("Guardar producto")
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Divider(modifier = Modifier.padding(vertical = 16.dp))
 
-            Divider(thickness = 1.dp)
-            Text(
-                "📋 Productos registrados:",
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
-            )
-
-            // 🧱 Lista de productos guardados (desde Room)
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
-            ) {
-                items(productos) { p: Producto ->
-                    Card(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 4.dp),
-                        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-                    ) {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(12.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween
-                        ) {
-                            Column {
-                                Text(p.nombre, style = MaterialTheme.typography.titleMedium)
-                                Text("Precio: S/. ${p.precio}")
-                            }
-                            Text("Stock: ${p.stock}")
-                        }
-                    }
+            Text("📋 Lista de productos:", style = MaterialTheme.typography.titleMedium)
+            LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                items(productos) { p ->
+                    ListItem(
+                        headlineContent = { Text(p.nombre) },
+                        supportingContent = { Text("Precio: S/.${p.precio} | Stock: ${p.stock}") }
+                    )
+                    Divider()
                 }
             }
         }
