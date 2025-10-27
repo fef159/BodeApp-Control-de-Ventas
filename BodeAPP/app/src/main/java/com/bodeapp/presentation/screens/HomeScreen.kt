@@ -58,6 +58,15 @@ fun HomeScreen(navController: NavController) {
             ) {
                 Text("Ir a Cierre de Caja")
             }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Button(
+                onClick = { navController.navigate("reportes") },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Ir a Reportes")
+            }
         }
     }
 }
