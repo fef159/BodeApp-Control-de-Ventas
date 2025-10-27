@@ -404,3 +404,141 @@ implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
 ---
 
 
+# 📦 BodeApp – Día 5: Persistencia Completa y Cálculo de Utilidad
+
+**Curso:** Aplicaciones Móviles con Android (Kotlin + Jetpack Compose)
+**Duración total:** 6 días
+**Docente:** Juan León
+
+---
+
+## 🎯 Objetivo del Día 5
+
+Finalizar la integración entre la **interfaz gráfica** y la **base de datos local Room**,
+añadiendo persistencia completa, cálculos de utilidad y reportes simples en tiempo real.
+
+El sistema ahora permite **registrar, vender, comprar y visualizar resultados** directamente desde la app.
+
+---
+
+## ⚙️ Actividades realizadas
+
+* Implementación completa del flujo **UI ↔ ViewModel ↔ Repository ↔ Room**.
+* Persistencia de datos garantizada al cerrar y reabrir la aplicación.
+* Actualización automática de la interfaz gracias a `Flow` y `StateFlow`.
+* Cálculo de **utilidad estimada diaria** en base al valor actual del inventario.
+* Mejoras visuales en todas las pantallas con **Material Design 3**.
+* Validaciones básicas en formularios para evitar valores vacíos o erróneos.
+* Pruebas de consistencia de stock:
+
+  * **Ventas:** disminuyen correctamente el stock.
+  * **Compras:** aumentan el stock.
+  * **Cierre:** refleja totales y utilidad actualizada.
+
+---
+
+## 📱 Flujo de pantallas
+
+| Pantalla              | Función                                                  | Estado actual        |
+| --------------------- | -------------------------------------------------------- | -------------------- |
+| 🏠 **Home**           | Menú principal con acceso a las demás secciones.         | ✅ Funcional          |
+| 📦 **Productos**      | Permite registrar productos y mostrarlos en tiempo real. | ✅ Conectada a Room   |
+| 💸 **Ventas**         | Reduce el stock de los productos seleccionados.          | ✅ Funcional con Room |
+| 🛒 **Compras**        | Aumenta el stock de los productos seleccionados.         | ✅ Funcional con Room |
+| 📊 **Cierre de Caja** | Calcula valor total del inventario y utilidad estimada.  | ✅ Dinámico           |
+
+---
+
+## 🧱 Estructura final del proyecto
+
+```
+com.bodeapp/
+├── data/
+│   ├── dao/
+│   │   └── ProductosDao.kt
+│   ├── db/
+│   │   └── BodeAppDatabase.kt
+│   └── model/
+│       ├── Producto.kt
+│       ├── Venta.kt
+│       └── Compra.kt
+│
+├── repository/
+│   └── ProductoRepository.kt
+│
+├── viewmodel/
+│   ├── InstructorViewModel.kt
+│   └── InstructorViewModelFactory.kt
+│
+├── presentation/
+│   └── screens/
+│       ├── HomeScreen.kt
+│       ├── ProductoScreen.kt
+│       ├── VentasScreen.kt
+│       ├── ComprasScreen.kt
+│       └── CierreScreen.kt
+│
+├── navigation/
+│   └── AppNavigation.kt
+│
+└── MainActivity.kt
+```
+
+---
+
+## 🧠 Lógica implementada
+
+| Operación          | Descripción                                    | Resultado           |
+| ------------------ | ---------------------------------------------- | ------------------- |
+| `insertProducto()` | Registra nuevos productos en la BD.            | Producto agregado.  |
+| `disminuirStock()` | Disminuye stock en cada venta.                 | Stock actualizado.  |
+| `aumentarStock()`  | Incrementa stock en cada compra.               | Stock actualizado.  |
+| `getProductos()`   | Devuelve flujo de productos en tiempo real.    | UI reactiva.        |
+| `Cierre de Caja`   | Calcula valor total del inventario y utilidad. | Cálculo automático. |
+
+---
+
+## 🧩 Dependencias principales
+
+```kotlin
+// Room Database
+implementation("androidx.room:room-runtime:2.6.1")
+kapt("androidx.room:room-compiler:2.6.1")
+implementation("androidx.room:room-ktx:2.6.1")
+
+// Jetpack Compose + Material 3
+implementation("androidx.activity:activity-compose:1.9.2")
+implementation(platform("androidx.compose:compose-bom:2024.09.01"))
+implementation("androidx.compose.material3:material3")
+implementation("androidx.navigation:navigation-compose:2.8.3")
+
+// Lifecycle y ViewModel
+implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
+implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.6")
+implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+```
+
+---
+
+## 🧪 Pruebas realizadas
+
+| Prueba               | Resultado                                             |
+| -------------------- | ----------------------------------------------------- |
+| Registro de producto | Producto guardado y persistente tras cerrar app.      |
+| Registro de venta    | Stock reducido correctamente en Room.                 |
+| Registro de compra   | Stock incrementado correctamente.                     |
+| Flujo de datos       | La UI se actualiza automáticamente con los cambios.   |
+| Cierre de caja       | Muestra valor total y utilidad del inventario actual. |
+
+---
+
+## 📁 Entregables del Día 5
+
+✅ Aplicación completa con persistencia local funcional.
+✅ Todas las pantallas conectadas a la base de datos.
+✅ Cálculo de utilidad y valor de inventario implementado.
+✅ Validaciones y actualización en tiempo real.
+✅ README documentado con estructura y pruebas.
+
+---
+
