@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bodeapp.data.model.Producto
+import com.bodeapp.presentation.navigation.BotonRegresar
 import com.bodeapp.viewmodel.InstructorViewModel
 import com.bodeapp.viewmodel.InstructorViewModelFactory
 
@@ -72,6 +73,7 @@ fun ProductoScreen(navController: NavController) {
                     Divider()
                 }
             }
+            BotonRegresar(navController)
         }
     }
 }

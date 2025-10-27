@@ -8,6 +8,7 @@ data class Compra(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val productoId: Int,
     val cantidad: Int,
-    val costo: Double
+    val costo: Double,
+    val fecha: String
 )
 

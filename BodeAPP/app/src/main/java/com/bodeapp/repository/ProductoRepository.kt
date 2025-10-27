@@ -7,6 +7,8 @@ import kotlinx.coroutines.flow.Flow
 class ProductoRepository(private val dao: ProductosDao) {
 
     fun getProductos(): Flow<List<Producto>> = dao.getAll()
+    
+    suspend fun getProductoById(id: Int): Producto? = dao.getById(id)
 
     suspend fun insertProducto(producto: Producto) = dao.insert(producto)
 

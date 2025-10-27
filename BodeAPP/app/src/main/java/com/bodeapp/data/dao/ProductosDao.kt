@@ -12,6 +12,9 @@ interface ProductosDao {
 
     @Query("SELECT * FROM productos")
     fun getAll(): Flow<List<Producto>>
+    
+    @Query("SELECT * FROM productos WHERE id = :id")
+    suspend fun getById(id: Int): Producto?
 
     @Query("UPDATE productos SET stock = stock + :cantidad WHERE id = :id")
     suspend fun aumentarStock(id: Int, cantidad: Int)
