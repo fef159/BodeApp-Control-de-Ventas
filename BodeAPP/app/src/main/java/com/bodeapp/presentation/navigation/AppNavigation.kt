@@ -42,3 +42,4 @@ fun BotonRegresar(navController: androidx.navigation.NavController) {
     ) {
         Text("Regresar al Menú Principal")
     }
+    }
