@@ -18,6 +18,7 @@ import com.bodeapp.presentation.navigation.BotonRegresar
 import com.bodeapp.viewmodel.InstructorViewModel
 import com.bodeapp.viewmodel.InstructorViewModelFactory
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.first
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -37,8 +38,16 @@ fun ReportesScreen(navController: NavController) {
 
     // Collect flows from ViewModel
     val reporteVentasDelDia by viewModel.getTotalVentasDelDia().collectAsState(initial = 0.0)
-    val productosMasVendidos by viewModel.getProductosMasVendidos().collectAsState(initial = emptyList())
-    val reporteComprasSemana by viewModel.getComprasDeLaSemana().collectAsState(initial = 0.0)
+    
+    var productosMasVendidos by remember { mutableStateOf<List<ProductoVendido>>(emptyList()) }
+    var reporteComprasSemana by remember { mutableStateOf(0.0) }
+    
+    val coroutineScope = rememberCoroutineScope()
+    
+    LaunchedEffect(Unit) {
+        productosMasVendidos = viewModel.getProductosMasVendidos(10).first()
+        reporteComprasSemana = viewModel.getComprasDeLaSemana().first()
+    }
 
     // Cierre de caja (ventas, compras, utilidad)
     var cierreDeCaja by remember { mutableStateOf(Triple(0.0, 0.0, 0.0)) }
@@ -225,7 +234,6 @@ fun ReportesScreen(navController: NavController) {
             Spacer(Modifier.height(16.dp))
 
             // Cierre de caja
-            val coroutineScope = rememberCoroutineScope()
             Card(
                 colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.surfaceVariant

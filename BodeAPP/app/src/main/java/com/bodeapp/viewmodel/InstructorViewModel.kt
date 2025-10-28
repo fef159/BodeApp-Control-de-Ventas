@@ -38,6 +38,18 @@ class InstructorViewModel(
             productoRepo.insertProducto(Producto(nombre = nombre, precio = precio, stock = stock))
         }
     }
+    
+    fun updateProducto(producto: Producto) {
+        viewModelScope.launch {
+            productoRepo.updateProducto(producto)
+        }
+    }
+    
+    fun deleteProducto(producto: Producto) {
+        viewModelScope.launch {
+            productoRepo.deleteProducto(producto)
+        }
+    }
 
     suspend fun verificarStockSuficiente(id: Int, cantidad: Int): Boolean {
         val producto = productoRepo.getProductoById(id)
@@ -50,17 +62,15 @@ class InstructorViewModel(
             return false
         }
 
-        viewModelScope.launch {
-            val subtotal = producto.precio * cantidad
-            val venta = Venta(
-                productoId = id,
-                cantidad = cantidad,
-                subtotal = subtotal,
-                fecha = getFechaActual()
-            )
-            ventasRepo.insertVenta(venta)
-            productoRepo.disminuirStock(id, cantidad)
-        }
+        val subtotal = producto.precio * cantidad
+        val venta = Venta(
+            productoId = id,
+            cantidad = cantidad,
+            subtotal = subtotal,
+            fecha = getFechaActual()
+        )
+        ventasRepo.insertVenta(venta)
+        productoRepo.disminuirStock(id, cantidad)
         return true
     }
 
@@ -71,10 +81,8 @@ class InstructorViewModel(
             costo = costo,
             fecha = getFechaActual()
         )
-        viewModelScope.launch {
-            comprasRepo.insertCompra(compra)
-            productoRepo.aumentarStock(id, cantidad)
-        }
+        comprasRepo.insertCompra(compra)
+        productoRepo.aumentarStock(id, cantidad)
     }
 
     fun getTotalVentasDelDia(fecha: String = getFechaActual()): Flow<Double> =

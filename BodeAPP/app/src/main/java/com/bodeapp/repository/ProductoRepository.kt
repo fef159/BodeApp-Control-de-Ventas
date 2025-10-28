@@ -11,6 +11,10 @@ class ProductoRepository(private val dao: ProductosDao) {
     suspend fun getProductoById(id: Int): Producto? = dao.getById(id)
 
     suspend fun insertProducto(producto: Producto) = dao.insert(producto)
+    
+    suspend fun updateProducto(producto: Producto) = dao.update(producto)
+    
+    suspend fun deleteProducto(producto: Producto) = dao.delete(producto)
 
     suspend fun aumentarStock(id: Int, cantidad: Int) = dao.aumentarStock(id, cantidad)
 
