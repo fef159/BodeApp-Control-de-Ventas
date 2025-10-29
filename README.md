@@ -1,544 +1,255 @@
+# 🏪 BodeApp - Control de Ventas e Inventario
 
-# 📦 BodeApp – Día 1: Planificación y Diseño
+**Una aplicación móvil completa para la gestión de inventario y ventas en pequeñas empresas y bodegas.**
 
-**Curso:** Aplicaciones Móviles con Android (Kotlin + Jetpack Compose)
-**Duración total:** 6 días
-**Docente:** Juan León
-
----
-
-## 🎯 Objetivo del Día 1
-
-Definir el alcance del proyecto, público objetivo y crear el prototipo visual en Figma.
+> 📱 Desarrollada con **Kotlin + Jetpack Compose** | 🎯 **Curso:** Aplicaciones Móviles con Android
 
 ---
 
-## 👥 Roles del equipo
+## 📋 Descripción del Proyecto
 
-* **Líder técnico:** Ninahuaman Yuto Anderson
-* **Diseñador UI:** Santos Sausnzabar Paulo
+BodeApp es una solución integral para pequeñas empresas que necesitan llevar un control automatizado de:
+- **Inventario de productos**
+- **Ventas diarias** 
+- **Compras y abastecimiento**
+- **Reportes financieros**
+- **Cierre de caja**
 
----
-
-## ⚙️ Funciones clave
-
-* Registro de productos.
-* Registro de ventas diarias.
-* Registro de compras o insumos.
-* Cierre de caja diario.
-* Reportes básicos.
+La aplicación resuelve el problema común de las bodegas que no tienen un sistema automatizado para gestionar sus operaciones diarias.
 
 ---
 
-## 🧑‍💻 Historias de usuario
+## ✨ Funcionalidades Principales
 
-1. Como usuario, quiero registrar un producto para poder llevar inventario.
-2. Como usuario, quiero registrar una venta para controlar ingresos.
-3. Como usuario, quiero registrar una compra o insumo para controlar costos.
-4. Como usuario, quiero calcular el cierre diario para saber el balance.
-5. Como usuario, quiero ver historial de ventas y compras para análisis.
+### 🏠 **Dashboard (Home)**
+- Resumen de ventas del día
+- Métricas de ganancias en tiempo real
+- Alertas de productos con stock bajo
+- Indicadores de rendimiento
 
----
+### 📦 **Gestión de Productos**
+- ➕ Crear productos (stock inicial = 0)
+- ✏️ Editar información y precios
+- 🔍 Búsqueda de productos
+- 🗑️ Eliminación con confirmación
 
-## 🎨 Prototipo (Figma)
+### 🛒 **Sistema de Ventas**
+- 🛍️ Carrito de compras intuitivo
+- ✅ Validación de stock disponible
+- 💰 Cálculo automático de subtotales
+- 📉 Actualización automática de inventario
 
-Puedes revisarlo aquí: [Prototipo en Figma](https://www.figma.com/make/57Di6JZnEyaCey2vKzrtml/Inventory-Management-App?node-id=0-4&t=1xdXjYJ87or7CxxS-1)
+### 📋 **Control de Compras**
+- 📥 Registro de compras a proveedores
+- 📈 Aumento automático de stock
+- 💵 Control de costos y precios sugeridos
+- 🔄 Creación automática de productos nuevos
 
-Debe incluir **mínimo 5 pantallas**:
-
-* Home
-* Registro de Producto
-* Ventas
-* Compras
-* Cierre de Caja / Reportes
-
----
-
-## 📁 Entregables del Día 1
-
-* Prototipo en Figma (link arriba).
-* Repositorio en GitHub con este README inicial y el enlace al Figma.
-
-
----
-
-# 📦 BodeApp – Día 2: Configuración del Proyecto y Estructura Base
-
-**Curso:** Aplicaciones Móviles con Android (Kotlin + Jetpack Compose)
-**Duración total:** 6 días
-**Docente:** Juan León
+### 📊 **Reportes y Cierre de Caja**
+- 📅 Reportes por fecha seleccionable
+- 💹 Análisis de ingresos vs gastos
+- 📈 Margen de ganancia
+- 🗂️ Historial completo de transacciones
+- 🗑️ Función de limpieza de datos
 
 ---
 
-## 🎯 Objetivo del Día 2
+## 🛠️ Tecnologías Utilizadas
 
-Configurar el proyecto base en Android Studio, crear la estructura de paquetes y establecer la navegación inicial entre pantallas.
-
----
-
-## ⚙️ Actividades realizadas
-
-* Creación del proyecto **BodeApp** con **Kotlin + Jetpack Compose**.
-* Configuración del **tema visual (Material 3)**.
-* Implementación de la **navegación inicial** con `Navigation Compose`.
-* Creación de pantallas vacías conectadas:
-
-  * Home
-  * Productos
-  * Ventas
-  * Compras
-  * Cierre de Caja
-* Estructura de paquetes organizada:
-
-  ```
-  com.bodeapp/
-  ├── data/
-  ├── model/
-  ├── navigation/
-  │   ├── AppNavigation.kt
-  │   └── HomeScreen.kt
-  ├── ui/
-  ├── util/
-  └── MainActivity.kt
-  ```
-* Integración de los **botones en HomeScreen** para navegar a cada pantalla.
-* Verificación de ejecución correcta de la navegación en emulador.
+| Tecnología | Propósito |
+|-----------|-----------|
+| **Kotlin** | Lenguaje principal |
+| **Jetpack Compose** | UI moderna y declarativa |
+| **Room Database** | Persistencia local |
+| **MVVM Architecture** | Arquitectura escalable |
+| **Navigation Compose** | Navegación entre pantallas |
+| **Material 3** | Diseño y componentes UI |
+| **Coroutines** | Programación asíncrona |
+| **StateFlow** | Gestión reactiva de estados |
 
 ---
 
-## 🌿 Ramas en GitHub
+## 📱 Capturas de Pantalla
 
-Cada integrante del equipo trabaja en su propia rama para mantener un flujo limpio de desarrollo:
+### 🏠 Pantalla Principal
+<img width="378" height="805" alt="image" src="https://github.com/user-attachments/assets/99a2ef7f-9fcb-4038-84ba-098549eda299" />
 
-| Rama                   | Descripción                                               |
-| ---------------------- | --------------------------------------------------------- |
-| `main`                 | Rama principal con el proyecto base y navegación inicial. |
-| `feature/home-ui`      | Desarrollo de la pantalla Home y flujo de botones.        |
-| `feature/productos-ui` | Desarrollo del formulario de productos.                   |
+### 📦 Gestión de Productos
+<img width="387" height="813" alt="image" src="https://github.com/user-attachments/assets/6e0b3401-dfc3-4ce8-adfa-693166effbda" />
+
+### 🛒 Sistema de Ventas
+<img width="384" height="811" alt="image" src="https://github.com/user-attachments/assets/e79913f9-3bc8-475a-8887-2e1820511893" />
+
+### 📋 Control de Compras
+<img width="380" height="815" alt="image" src="https://github.com/user-attachments/assets/f69f504d-144c-401c-8a64-481f200d6b73" />
+
+
+### 📊 Reportes y Análisis
+<img width="389" height="816" alt="image" src="https://github.com/user-attachments/assets/785b5665-a084-492f-b860-e383118e4bcd" />
 
 
 ---
 
-## 🧱 Dependencias agregadas
+## 🎨 Diseño UI/UX
 
-```kotlin
-// Jetpack Compose
-implementation("androidx.activity:activity-compose:1.9.2")
-implementation(platform("androidx.compose:compose-bom:2024.09.01"))
-implementation("androidx.compose.ui:ui")
-implementation("androidx.compose.material3:material3")
-implementation("androidx.compose.ui:ui-tooling-preview")
-debugImplementation("androidx.compose.ui:ui-tooling")
+**🎨 Prototipo en Figma:** [https://www.figma.com/make/57Di6JZnEyaCey2vKzrtml/Sistema-de-Gesti%C3%B3n-de-Bodega?node-id=0-4&t=2Aok48fy0bN668Fi-0]
 
-// Navigation Compose
-implementation("androidx.navigation:navigation-compose:2.8.3")
+### Características del Diseño:
+- ✅ **Material 3** con colores modernos
+- ✅ **Navegación intuitiva** con tabs superiores
+- ✅ **Indicadores visuales** para estados de stock
+- ✅ **Confirmaciones de seguridad** para acciones críticas
+- ✅ **Responsive design** para diferentes tamaños
+
+---
+
+## 🚀 Instalación y Uso
+
+### Prerrequisitos
+```bash
+- Android Studio Hedgehog | 2023.1.1+
+- Kotlin 1.9.0+
+- Android SDK 26+ (API Level 26)
+- JVM Target 11
 ```
 
-
----
-
-## 📁 Entregables del Día 2
-
-✅ Proyecto base funcional en Android Studio.
-✅ Navegación inicial entre pantallas implementada.
-✅ Ramas creadas en GitHub para desarrollo colaborativo.
-✅ README actualizado con estructura y dependencias.
-
----
-
-
-# 📦 BodeApp – Día 3: Desarrollo de Interfaz (UI/UX)
-
-**Curso:** Aplicaciones Móviles con Android (Kotlin + Jetpack Compose)
-**Duración total:** 6 días
-**Docente:** Juan León
-
----
-
-## 🎯 Objetivo del Día 3
-
-Desarrollar las **interfaces principales** de la aplicación BodeApp utilizando **Material Design 3**, aplicando componentes visuales modernos y funcionales.
-Los formularios permiten **escritura momentánea** con estado local mediante `remember`, que será reemplazado por persistencia real en los próximos días.
-
----
-
-## ⚙️ Actividades realizadas
-
-* Implementación de las pantallas base con Jetpack Compose y Material 3:
-
-  * **Home:** menú principal con accesos a Productos, Ventas, Compras y Cierre.
-  * **Registro de Producto:** formulario con nombre, precio y stock inicial.
-  * **Ventas:** campos para producto, cantidad y subtotal.
-  * **Compras/Insumos:** formulario con producto, costo y cantidad.
-  * **Cierre de Caja:** muestra resumen de ventas, compras y utilidad.
-* Integración de la navegación entre pantallas con `NavHostController`.
-* Aplicación de **Material Design 3**: `Scaffold`, `TopAppBar`, `OutlinedTextField`, `Button`, `Surface`, `MaterialTheme`.
-* Formularios con **estado temporal editable** (`remember { mutableStateOf("") }`) para permitir escritura.
-* Proyecto estructurado con el patrón **MVVM** para las próximas etapas de desarrollo.
-
----
-
-## 🧱 Estructura del proyecto
-
+### Instalación
+```bash
+1. git clone https://github.com/TU_USUARIO/BodeApp-Control-de-Ventas.git
+2. cd BodeApp-Control-de-Ventas
+3. ./gradlew build
+4. Ejecutar en emulador o dispositivo físico
 ```
-com.bodeapp/
-├── data/                   → Base de datos y entidades (próximo día)
-│   ├── dao/
-│   ├── db/
-│   └── model/
-│
-├── presentation/           → Capa de presentación (UI y navegación)
-│   ├── navigation/
-│   │   └── AppNavigation.kt
-│   └── screens/
-│       ├── HomeScreen.kt
-│       ├── ProductoScreen.kt
-│       ├── VentaScreen.kt
-│       ├── CompraScreen.kt
-│       └── CierreScreen.kt
-│
-├── repository/             → Conexión entre datos y UI (próximo día)
-├── ui/theme/               → Colores, tipografía y estilos de Material 3
-├── viewmodel/              → Lógica de presentación (a implementar)
-└── MainActivity.kt         → Punto de entrada de la aplicación
+
+### Flujo de Uso Básico
+```
+1. 📦 Crear productos en "Productos" (stock = 0)
+2. 📋 Comprar inventario en "Compras" 
+3. 🛒 Realizar ventas en "Ventas"
+4. 📊 Revisar reportes en "Reportes"
 ```
 
 ---
 
-## 🖥️ Pantallas implementadas
+## 📁 Estructura del Proyecto
 
-| Pantalla              | Descripción                                             | Estado     |
-| --------------------- | ------------------------------------------------------- | ---------- |
-| 🏠 **Home**           | Menú con botones hacia cada módulo.                     | ✅ Completa |
-| 📦 **Productos**      | Formulario editable con nombre, precio y stock inicial. | ✅ Completa |
-| 💰 **Ventas**         | Campos para registrar producto, cantidad y subtotal.    | ✅ Completa |
-| 🧾 **Compras**        | Formulario para registrar producto, costo y cantidad.   | ✅ Completa |
-| 💼 **Cierre de Caja** | Resumen con ventas, compras y utilidad.                 | ✅ Completa |
-
----
-
-## ⚙️ Dependencias utilizadas
-
-Basadas en el archivo `build.gradle.kts` actual del proyecto 👇
-
-```kotlin
-// Jetpack Compose + Material 3
-implementation(libs.androidx.core.ktx)
-implementation(libs.androidx.lifecycle.runtime.ktx)
-implementation(libs.androidx.activity.compose)
-implementation(platform(libs.androidx.compose.bom))
-implementation(libs.androidx.ui)
-implementation(libs.androidx.ui.graphics)
-implementation(libs.androidx.ui.tooling.preview)
-implementation(libs.androidx.material3)
-
-// Navigation Compose
-implementation("androidx.navigation:navigation-compose:2.8.3")
-
-// Room (base de datos local - se usará en el Día 4)
-val roomVersion = "2.6.1"
-implementation("androidx.room:room-runtime:$roomVersion")
-kapt("androidx.room:room-compiler:$roomVersion")
-implementation("androidx.room:room-ktx:$roomVersion")
-
-// ViewModel + ciclo de vida
-implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
-implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.6")
-
-// Corrutinas
-implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
-
-// Depuración y pruebas
-debugImplementation(libs.androidx.ui.tooling)
-debugImplementation(libs.androidx.ui.test.manifest)
-testImplementation(libs.junit)
-androidTestImplementation(libs.androidx.junit)
-androidTestImplementation(libs.androidx.espresso.core)
-androidTestImplementation(platform(libs.androidx.compose.bom))
-androidTestImplementation(libs.androidx.ui.test.junit4)
+```
+app/src/main/java/com/bodeapp/
+├── 📱 presentation/
+│   ├── screens/          # Pantallas de la app
+│   ├── navigation/       # Navegación
+│   └── MainActivity.kt   # Actividad principal
+├── 🗃️ data/
+│   ├── model/           # Modelos de datos
+│   ├── dao/             # Acceso a datos
+│   └── db/              # Base de datos Room
+├── 📚 repository/       # Repositorios
+├── 🧠 viewmodel/        # ViewModels MVVM
+├── 🎨 ui/theme/         # Temas y colores
+└── ⚙️ util/            # Utilidades
 ```
 
 ---
 
-## 🌿 Ramas en GitHub
+## 👥 Equipo de Desarrollo
 
-| Rama                   | Descripción                                              |
-| ---------------------- | -------------------------------------------------------- |
-| `main`                 | Interfaz completa con navegación funcional y Material 3. |
-| `feature/home-ui`      | Pantalla Home con botones de navegación.                 |
-| `feature/productos-ui` | Formulario editable de registro de producto.             |
-| `feature/ventas-ui`    | Interfaz de registro de ventas.                          |
-| `feature/compras-ui`   | Formulario de compras/insumos.                           |
-| `feature/cierre-ui`    | Pantalla del resumen de cierre de caja.                  |
+### Roles y Responsabilidades
+
+| Integrante | Rol | Responsabilidades |
+|-----------|-----|------------------|
+| **[Ninahuaman Yuto Anderson]** | 🔧 **Líder Técnico** | Arquitectura, Backend, Base de datos |
+| **[Paulo Santos Zuasnabar]** | 🎨 **Diseñador UI/UX** | Interfaz, Experiencia de usuario, Figma, Navegacion |
 
 ---
 
-## 🧩 Entregables del Día 3
+## 🎯 Cumplimiento de Requerimientos
 
-✅ Interfaz completa y navegable con Material 3.
-✅ Formularios funcionales con escritura momentánea (`remember`).
-✅ Navegación entre pantallas con `NavHostController`.
-✅ Estructura organizada bajo el patrón **MVVM**.
-✅ Proyecto preparado para implementar persistencia con **Room** y **ViewModel** en el Día 4.
+### ✅ Día 1 - Planificación y Diseño
+- [x] Definición de alcance y público objetivo
+- [x] 5+ pantallas en Figma
+- [x] Historias de usuario completadas
+- [x] Repositorio GitHub configurado
 
----
+### ✅ Día 2 - Configuración del Proyecto
+- [x] Proyecto Kotlin + Jetpack Compose
+- [x] Estructura de paquetes organizada
+- [x] Navegación inicial implementada
+- [x] Ramas de trabajo configuradas
 
-# 📦 BodeApp – Día 4: Integración con Base de Datos Local (Room)
+### ✅ Día 3 - Desarrollo de Interfaz
+- [x] 5 pantallas principales completadas
+- [x] Material 3 implementado
+- [x] Navegación funcional
+- [x] Formularios y validaciones
 
-**Curso:** Aplicaciones Móviles con Android (Kotlin + Jetpack Compose)
-**Duración total:** 6 días
-**Docente:** Juan León
+### ✅ Día 4 - Lógica y Manejo de Datos
+- [x] Modelos Room definidos
+- [x] Base de datos SQLite funcional
+- [x] CRUD completo implementado
+- [x] Actualización automática de stock
 
----
+### ✅ Día 5 - Funcionalidades y Reportes
+- [x] Cierre de caja implementado
+- [x] Reportes por fecha
+- [x] Validaciones de stock
+- [x] Pruebas en dispositivos
 
-## 🎯 Objetivo del Día 4
-
-Conectar la interfaz de usuario con modelos de datos reales usando **Room Database**.
-Implementar operaciones **CRUD** (crear, leer, actualizar, disminuir stock y aumentar stock) para los productos registrados.
-
----
-
-## ⚙️ Actividades realizadas
-
-* Configuración de la **base de datos local Room** (`BodeAppDatabase`).
-* Creación de las **entidades**:
-
-  * `Producto`
-  * `Venta`
-  * `Compra`
-* Implementación del **DAO** (`ProductosDao`) con métodos:
-
-  * `insert()`, `update()`, `delete()`
-  * `aumentarStock()` y `disminuirStock()`
-* Implementación del **Repositorio (`ProductoRepository`)** para manejar la comunicación entre Room y el ViewModel.
-* Creación del **InstructorViewModel**, utilizando `StateFlow` para actualizar la UI en tiempo real.
-* Implementación del **InstructorViewModelFactory** para conectar correctamente la BD con el ViewModel.
-* Conexión total entre **UI ↔ ViewModel ↔ Repository ↔ Room**.
-* Adaptación de las pantallas con lógica real:
-
-  * **Productos:** registrar, listar y mostrar stock actualizado.
-  * **Ventas:** reducir stock al registrar una venta.
-  * **Compras:** aumentar stock al registrar una compra.
-  * **Cierre:** mostrar resumen del inventario y utilidad estimada.
-* Verificación de persistencia real (datos se mantienen al cerrar la app).
+### ✅ Día 6 - Entrega Final
+- [x] README completo
+- [x] Release v1.0 preparado
+- [x] Presentación estructurada
 
 ---
 
-## 🧱 Estructura del proyecto
+## 🚀 Release v1.0
 
-```
-com.bodeapp/
-├── data/
-│   ├── dao/
-│   │   └── ProductosDao.kt
-│   ├── db/
-│   │   └── BodeAppDatabase.kt
-│   └── model/
-│       ├── Producto.kt
-│       ├── Venta.kt
-│       └── Compra.kt
-│
-├── repository/
-│   └── ProductoRepository.kt
-│
-├── viewmodel/
-│   ├── InstructorViewModel.kt
-│   └── InstructorViewModelFactory.kt
-│
-├── presentation/
-│   └── screens/
-│       ├── ProductoScreen.kt
-│       ├── VentasScreen.kt
-│       ├── ComprasScreen.kt
-│       └── CierreScreen.kt
-│
-├── navigation/
-│   ├── AppNavigation.kt
-│   └── HomeScreen.kt
-│
-└── MainActivity.kt
-```
+### Características de la Versión
+- ✅ **Funcionalidad completa** para gestión de bodegas
+- ✅ **Base de datos local** con Room
+- ✅ **Interfaz moderna** con Material 3
+- ✅ **Validaciones robustas** en todas las operaciones
+- ✅ **Reportes detallados** con análisis financiero
+
+### 📥 Descarga
+**[📱 APK Release v1.0](AGREGAR_ENLACE_RELEASE)**
 
 ---
 
-## 🧩 Dependencias principales
-
-```kotlin
-// Room Database
-implementation("androidx.room:room-runtime:2.6.1")
-kapt("androidx.room:room-compiler:2.6.1")
-implementation("androidx.room:room-ktx:2.6.1")
-
-// Jetpack Compose + Material 3
-implementation("androidx.activity:activity-compose:1.9.2")
-implementation(platform("androidx.compose:compose-bom:2024.09.01"))
-implementation("androidx.compose.material3:material3")
-implementation("androidx.navigation:navigation-compose:2.8.3")
-
-// Lifecycle y ViewModel
-implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
-implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.6")
-implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
-```
+### Flujo Demostrado:
+1. 🏠 Dashboard con métricas
+2. 📦 Creación de productos
+3. 📋 Registro de compras
+4. 🛒 Proceso de venta
+5. 📊 Generación de reportes
 
 ---
 
-## 🧠 Pruebas realizadas
+## 🔮 Futuras Mejoras
 
-✅ **Inserción:** los productos se guardan correctamente en la base de datos.
-✅ **Persistencia:** los datos permanecen tras cerrar la app.
-✅ **Actualización:** las ventas y compras modifican el stock en tiempo real.
-✅ **Reactividad:** los cambios en Room se reflejan automáticamente en Compose.
-✅ **Integración completa:** UI ↔ ViewModel ↔ Repository ↔ Room funcionando sin errores.
-
----
-
-## 📁 Entregables del Día 4
-
-✅ Base de datos Room totalmente funcional.
-✅ Pantallas conectadas a datos reales (Productos, Ventas, Compras, Cierre).
-✅ Persistencia y actualización en tiempo real de stock.
-✅ Pruebas de inserción y modificación exitosas.
-✅ README actualizado con estructura y dependencias.
+- [ ] 🌐 Sincronización en la nube
+- [ ] 📧 Reportes por email
+- [ ] 📊 Gráficos avanzados
+- [ ] 👥 Múltiples usuarios
+- [ ] 🔔 Notificaciones push
+- [ ] 📱 Modo offline mejorado
 
 ---
 
+## 📄 Licencia
 
-# 📦 BodeApp – Día 5: Persistencia Completa y Cálculo de Utilidad
-
-**Curso:** Aplicaciones Móviles con Android (Kotlin + Jetpack Compose)
-**Duración total:** 6 días
-**Docente:** Juan León
+Este proyecto fue desarrollado como parte del curso **"Aplicaciones Móviles con Android"** con fines educativos.
 
 ---
 
-## 🎯 Objetivo del Día 5
+## 📞 Contacto
 
-Finalizar la integración entre la **interfaz gráfica** y la **base de datos local Room**,
-añadiendo persistencia completa, cálculos de utilidad y reportes simples en tiempo real.
-
-El sistema ahora permite **registrar, vender, comprar y visualizar resultados** directamente desde la app.
+**🐙 GitHub:** [https://github.com/fef159/BodeApp-Control-de-Ventas]  
+**🎨 Figma:** [https://www.figma.com/make/57Di6JZnEyaCey2vKzrtml/Sistema-de-Gesti%C3%B3n-de-Bodega?node-id=0-4&t=2Aok48fy0bN668Fi-0]
 
 ---
 
-## ⚙️ Actividades realizadas
+<div align="center">
 
-* Implementación completa del flujo **UI ↔ ViewModel ↔ Repository ↔ Room**.
-* Persistencia de datos garantizada al cerrar y reabrir la aplicación.
-* Actualización automática de la interfaz gracias a `Flow` y `StateFlow`.
-* Cálculo de **utilidad estimada diaria** en base al valor actual del inventario.
-* Mejoras visuales en todas las pantallas con **Material Design 3**.
-* Validaciones básicas en formularios para evitar valores vacíos o erróneos.
-* Pruebas de consistencia de stock:
+**Desarrollado con ❤️ por [SalchiTeam]**
 
-  * **Ventas:** disminuyen correctamente el stock.
-  * **Compras:** aumentan el stock.
-  * **Cierre:** refleja totales y utilidad actualizada.
-
----
-
-## 📱 Flujo de pantallas
-
-| Pantalla              | Función                                                  | Estado actual        |
-| --------------------- | -------------------------------------------------------- | -------------------- |
-| 🏠 **Home**           | Menú principal con acceso a las demás secciones.         | ✅ Funcional          |
-| 📦 **Productos**      | Permite registrar productos y mostrarlos en tiempo real. | ✅ Conectada a Room   |
-| 💸 **Ventas**         | Reduce el stock de los productos seleccionados.          | ✅ Funcional con Room |
-| 🛒 **Compras**        | Aumenta el stock de los productos seleccionados.         | ✅ Funcional con Room |
-| 📊 **Cierre de Caja** | Calcula valor total del inventario y utilidad estimada.  | ✅ Dinámico           |
-
----
-
-## 🧱 Estructura final del proyecto
-
-```
-com.bodeapp/
-├── data/
-│   ├── dao/
-│   │   └── ProductosDao.kt
-│   ├── db/
-│   │   └── BodeAppDatabase.kt
-│   └── model/
-│       ├── Producto.kt
-│       ├── Venta.kt
-│       └── Compra.kt
-│
-├── repository/
-│   └── ProductoRepository.kt
-│
-├── viewmodel/
-│   ├── InstructorViewModel.kt
-│   └── InstructorViewModelFactory.kt
-│
-├── presentation/
-│   └── screens/
-│       ├── HomeScreen.kt
-│       ├── ProductoScreen.kt
-│       ├── VentasScreen.kt
-│       ├── ComprasScreen.kt
-│       └── CierreScreen.kt
-│
-├── navigation/
-│   └── AppNavigation.kt
-│
-└── MainActivity.kt
-```
-
----
-
-## 🧠 Lógica implementada
-
-| Operación          | Descripción                                    | Resultado           |
-| ------------------ | ---------------------------------------------- | ------------------- |
-| `insertProducto()` | Registra nuevos productos en la BD.            | Producto agregado.  |
-| `disminuirStock()` | Disminuye stock en cada venta.                 | Stock actualizado.  |
-| `aumentarStock()`  | Incrementa stock en cada compra.               | Stock actualizado.  |
-| `getProductos()`   | Devuelve flujo de productos en tiempo real.    | UI reactiva.        |
-| `Cierre de Caja`   | Calcula valor total del inventario y utilidad. | Cálculo automático. |
-
----
-
-## 🧩 Dependencias principales
-
-```kotlin
-// Room Database
-implementation("androidx.room:room-runtime:2.6.1")
-kapt("androidx.room:room-compiler:2.6.1")
-implementation("androidx.room:room-ktx:2.6.1")
-
-// Jetpack Compose + Material 3
-implementation("androidx.activity:activity-compose:1.9.2")
-implementation(platform("androidx.compose:compose-bom:2024.09.01"))
-implementation("androidx.compose.material3:material3")
-implementation("androidx.navigation:navigation-compose:2.8.3")
-
-// Lifecycle y ViewModel
-implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
-implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.6")
-implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
-```
-
----
-
-## 🧪 Pruebas realizadas
-
-| Prueba               | Resultado                                             |
-| -------------------- | ----------------------------------------------------- |
-| Registro de producto | Producto guardado y persistente tras cerrar app.      |
-| Registro de venta    | Stock reducido correctamente en Room.                 |
-| Registro de compra   | Stock incrementado correctamente.                     |
-| Flujo de datos       | La UI se actualiza automáticamente con los cambios.   |
-| Cierre de caja       | Muestra valor total y utilidad del inventario actual. |
-
----
-
-## 📁 Entregables del Día 5
-
-✅ Aplicación completa con persistencia local funcional.
-✅ Todas las pantallas conectadas a la base de datos.
-✅ Cálculo de utilidad y valor de inventario implementado.
-✅ Validaciones y actualización en tiempo real.
-✅ README documentado con estructura y pruebas.
-
----
-
+</div>
