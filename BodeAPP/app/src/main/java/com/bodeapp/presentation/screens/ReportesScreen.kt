@@ -3,7 +3,6 @@ package com.bodeapp.presentation.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -56,25 +55,11 @@ fun ReportesScreen(navController: NavController) {
     val gananciaGeneral = ingresosGenerales - gastosGenerales
 
     Scaffold(
-        topBar = {
-            Column {
-                CenterAlignedTopAppBar(
-                    title = {
-                        Text(
-                            "Sistema de Gestión de Bodega",
-                            color = MaterialTheme.colorScheme.primary,
-                            fontWeight = FontWeight.Bold
-                        )
-                    },
-                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                        containerColor = Color.White
-                    )
-                )
-                TopNavigationBar(
-                    currentRoute = "reportes",
-                    onNavigate = { route -> navController.navigate(route) }
-                )
-            }
+        bottomBar = {
+            BottomNavigationBar(
+                currentRoute = "reportes",
+                onNavigate = { route -> navController.navigate(route) }
+            )
         }
     ) { padding ->
         LazyColumn(

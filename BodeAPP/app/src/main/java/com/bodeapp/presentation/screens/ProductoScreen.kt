@@ -74,11 +74,11 @@ fun NuevoProductoDialog(
                 OutlinedTextField(
                     value = stock,
                     onValueChange = { stock = it },
-                    label = { Text("Stock Inicial") },
+                    label = { Text("Stock") },
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     singleLine = true,
-                    enabled = producto != null, // Solo editable si es producto existente
+                    enabled = false,
                     placeholder = { Text(if (producto == null) "Se creará con stock = 0" else "Stock actual") }
                 )
 
@@ -251,25 +251,11 @@ fun ProductoScreen(navController: NavController) {
     }
 
     Scaffold(
-        topBar = {
-            Column {
-                CenterAlignedTopAppBar(
-                    title = {
-                        Text(
-                            "Sistema de Gestión de Bodega",
-                            color = MaterialTheme.colorScheme.primary,
-                            fontWeight = FontWeight.Bold
-                        )
-                    },
-                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                        containerColor = Color.White
-                    )
-                )
-                TopNavigationBar(
-                    currentRoute = "productos",
-                    onNavigate = { route -> navController.navigate(route) }
-                )
-            }
+        bottomBar = {
+            BottomNavigationBar(
+                currentRoute = "productos",
+                onNavigate = { route -> navController.navigate(route) }
+            )
         },
         floatingActionButton = {
             FloatingActionButton(
@@ -297,7 +283,7 @@ fun ProductoScreen(navController: NavController) {
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = "Gestiona tu catálogo de productos. Los nuevos productos se crean con stock = 0",
+                text = "Gestiona tu catálogo de productos. Los nuevos productos se crean sin stock.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = Color.Gray
             )

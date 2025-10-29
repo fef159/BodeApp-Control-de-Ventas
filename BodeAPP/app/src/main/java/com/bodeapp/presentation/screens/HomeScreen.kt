@@ -3,27 +3,24 @@ package com.bodeapp.presentation.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.ui.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.*
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.bodeapp.viewmodel.InstructorViewModel
-import com.bodeapp.viewmodel.InstructorViewModelFactory
+import com.bodeapp.viewmodel.*
 
 @Composable
-fun TopNavigationBar(
+fun BottomNavigationBar(
     currentRoute: String,
     onNavigate: (String) -> Unit
 ) {
@@ -31,6 +28,7 @@ fun TopNavigationBar(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color(0xFFF5F5F5))
+            .navigationBarsPadding()
             .padding(horizontal = 16.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
@@ -78,13 +76,16 @@ fun RowScope.NavigationTab(
         onClick = onClick,
         modifier = Modifier
             .weight(1f)
-            .height(48.dp),
+            .height(56.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = if (isSelected) Color.White else Color.Transparent,
+            containerColor = if (isSelected) Color.White.copy(alpha = 0.9f) else Color.Transparent,
             contentColor = if (isSelected) Color.Black else Color.Gray
         ),
         shape = RoundedCornerShape(24.dp),
-        elevation = if (isSelected) ButtonDefaults.buttonElevation(2.dp) else ButtonDefaults.buttonElevation(0.dp)
+        elevation = ButtonDefaults.buttonElevation(
+            defaultElevation = if (isSelected) 4.dp else 0.dp
+        ),
+        contentPadding = PaddingValues(vertical = 6.dp)
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -93,12 +94,16 @@ fun RowScope.NavigationTab(
             Icon(
                 imageVector = icon,
                 contentDescription = label,
-                modifier = Modifier.size(20.dp)
+                modifier = Modifier
+                    .size(if (isSelected) 24.dp else 22.dp),
+                tint = if (isSelected) Color.Black else Color.Gray.copy(alpha = 0.8f)
             )
+            Spacer(modifier = Modifier.height(3.dp))
             Text(
                 text = label,
-                fontSize = 13.sp,
-                fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
+                fontSize = if (isSelected) 12.sp else 11.sp,
+                fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
+                color = if (isSelected) Color.Black else Color.Gray.copy(alpha = 0.8f)
             )
         }
     }
@@ -190,32 +195,19 @@ fun HomeScreen(navController: NavController) {
     val productoMasVendidoNombre: String? = productoMasVendidoId?.let { id -> productos.find { it.id == id }?.nombre }
 
     Scaffold(
-        topBar = {
-            Column {
-                CenterAlignedTopAppBar(
-                    title = {
-                        Text(
-                            "Sistema de Gestión de Bodega",
-                            color = MaterialTheme.colorScheme.primary,
-                            fontWeight = FontWeight.Bold
-                        )
-                    },
-                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                        containerColor = Color.White
-                    )
-                )
-                TopNavigationBar(
-                    currentRoute = "home",
-                    onNavigate = { route -> navController.navigate(route) }
-                )
-            }
+        bottomBar = {
+            BottomNavigationBar(
+                currentRoute = "home",
+                onNavigate = { route -> navController.navigate(route) }
+            )
         }
     ) { padding ->
         LazyColumn(
             modifier = Modifier
+                .statusBarsPadding()
                 .fillMaxSize()
                 .background(Color(0xFFF8F9FA))
-                .padding(padding)
+                .padding(bottom=0.dp)
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
@@ -230,6 +222,52 @@ fun HomeScreen(navController: NavController) {
                     style = MaterialTheme.typography.bodyMedium,
                     color = Color.Gray
                 )
+            }
+
+            // Tarjeta de Producto más vendido
+            if (productoMasVendidoNombre != null && cantidadMasVendida > 0){
+                item {
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = CardDefaults.cardColors(containerColor = Color.White),
+                        elevation = CardDefaults.cardElevation(2.dp),
+                        shape = RoundedCornerShape(12.dp)
+                    ) {
+                        Column(
+                            modifier = Modifier.padding(20.dp)
+                        ) {
+                            Text(
+                                text = "Producto más vendido",
+                                style = MaterialTheme.typography.titleLarge,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(modifier = Modifier.height(12.dp))
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(
+                                        text = productoMasVendidoNombre,
+                                        fontWeight = FontWeight.Medium
+                                    )
+                                    Text(
+                                        text = "Unidades vendidas: $cantidadMasVendida",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = Color.Gray
+                                    )
+                                }
+                                Icon(
+                                    imageVector = Icons.Default.Star,
+                                    contentDescription = null,
+                                    tint = Color(0xFFF59E0B)
+                                )
+                            }
+
+                        }
+                    }
+                }
             }
 
             item {
@@ -274,64 +312,6 @@ fun HomeScreen(navController: NavController) {
                             icon = Icons.Default.AttachMoney,
                             iconTint = if (gananciaHoy >= 0) Color(0xFF3B82F6) else Color(0xFFEF4444)
                         )
-                    }
-                }
-            }
-
-            // Tarjeta de Producto más vendido
-            item {
-                Card(
-                    modifier = Modifier.fillMaxWidth(),
-                    colors = CardDefaults.cardColors(containerColor = Color.White),
-                    elevation = CardDefaults.cardElevation(2.dp),
-                    shape = RoundedCornerShape(12.dp)
-                ) {
-                    Column(
-                        modifier = Modifier.padding(20.dp)
-                    ) {
-                        Text(
-                            text = "Producto más vendido",
-                            style = MaterialTheme.typography.titleLarge,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Spacer(modifier = Modifier.height(12.dp))
-                        if (productoMasVendidoNombre == null || cantidadMasVendida == 0) {
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(32.dp),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(
-                                    text = "Sin datos suficientes",
-                                    color = Color.Gray,
-                                    style = MaterialTheme.typography.bodyMedium
-                                )
-                            }
-                        } else {
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Column(modifier = Modifier.weight(1f)) {
-                                    Text(
-                                        text = productoMasVendidoNombre,
-                                        fontWeight = FontWeight.Medium
-                                    )
-                                    Text(
-                                        text = "Unidades vendidas: $cantidadMasVendida",
-                                        style = MaterialTheme.typography.bodySmall,
-                                        color = Color.Gray
-                                    )
-                                }
-                                Icon(
-                                    imageVector = Icons.Default.Star,
-                                    contentDescription = null,
-                                    tint = Color(0xFFF59E0B)
-                                )
-                            }
-                        }
                     }
                 }
             }

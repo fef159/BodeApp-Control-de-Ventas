@@ -2,8 +2,6 @@ package com.bodeapp.presentation.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -49,25 +47,11 @@ fun ComprasScreen(navController: NavController) {
     val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
-        topBar = {
-            Column {
-                CenterAlignedTopAppBar(
-                    title = {
-                        Text(
-                            "Sistema de Gestión de Bodega",
-                            color = MaterialTheme.colorScheme.primary,
-                            fontWeight = FontWeight.Bold
-                        )
-                    },
-                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                        containerColor = Color.White
-                    )
-                )
-                TopNavigationBar(
-                    currentRoute = "compras",
-                    onNavigate = { route -> navController.navigate(route) }
-                )
-            }
+        bottomBar = {
+            BottomNavigationBar(
+                currentRoute = "compras",
+                onNavigate = { route -> navController.navigate(route) }
+            )
         }
     ) { padding ->
         Column(
