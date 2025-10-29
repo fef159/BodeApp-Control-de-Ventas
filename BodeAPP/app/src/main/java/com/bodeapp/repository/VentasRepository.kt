@@ -22,5 +22,7 @@ class VentasRepository(private val ventasDao: VentasDao) {
         ventasDao.getProductosMasVendidos(limite)
     
     suspend fun getTotalVentas(): Double = ventasDao.getTotalVentas() ?: 0.0
+    
+    suspend fun deleteAllVentas() = ventasDao.deleteAll()
 }
 

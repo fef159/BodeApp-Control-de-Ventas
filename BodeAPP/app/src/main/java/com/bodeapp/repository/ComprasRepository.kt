@@ -17,5 +17,7 @@ class ComprasRepository(private val comprasDao: ComprasDao) {
         comprasDao.getTotalComprasPorFecha(fechaInicio, fechaFin) ?: 0.0
     
     suspend fun getTotalCompras(): Double = comprasDao.getTotalCompras() ?: 0.0
+    
+    suspend fun deleteAllCompras() = comprasDao.deleteAll()
 }
 

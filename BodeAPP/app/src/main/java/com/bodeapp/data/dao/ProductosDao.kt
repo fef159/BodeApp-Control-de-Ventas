@@ -21,4 +21,7 @@ interface ProductosDao {
 
     @Query("UPDATE productos SET stock = stock - :cantidad WHERE id = :id AND stock >= :cantidad")
     suspend fun disminuirStock(id: Int, cantidad: Int)
+    
+    @Query("DELETE FROM productos")
+    suspend fun deleteAll()
 }

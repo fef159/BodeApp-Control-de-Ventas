@@ -19,5 +19,8 @@ interface ComprasDao {
     
     @Query("SELECT SUM(costo) FROM compras")
     suspend fun getTotalCompras(): Double?
+    
+    @Query("DELETE FROM compras")
+    suspend fun deleteAll()
 }
 

@@ -108,4 +108,10 @@ class InstructorViewModel(
         val utilidad = (totalVentas ?: 0.0) - (totalCompras ?: 0.0)
         return Triple(totalVentas ?: 0.0, totalCompras ?: 0.0, utilidad)
     }
+    
+    suspend fun limpiarTodosLosDatos() {
+        productoRepo.deleteAllProductos()
+        ventasRepo.deleteAllVentas()
+        comprasRepo.deleteAllCompras()
+    }
 }

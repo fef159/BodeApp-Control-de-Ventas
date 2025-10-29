@@ -25,6 +25,9 @@ interface VentasDao {
     
     @Query("SELECT SUM(subtotal) FROM ventas")
     suspend fun getTotalVentas(): Double?
+    
+    @Query("DELETE FROM ventas")
+    suspend fun deleteAll()
 }
 
 data class ProductoVendido(

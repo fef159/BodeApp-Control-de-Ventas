@@ -19,4 +19,6 @@ class ProductoRepository(private val dao: ProductosDao) {
     suspend fun aumentarStock(id: Int, cantidad: Int) = dao.aumentarStock(id, cantidad)
 
     suspend fun disminuirStock(id: Int, cantidad: Int) = dao.disminuirStock(id, cantidad)
+    
+    suspend fun deleteAllProductos() = dao.deleteAll()
 }
