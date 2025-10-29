@@ -211,7 +211,7 @@ app/src/main/java/com/bodeapp/
 - ✅ **Reportes detallados** con análisis financiero
 
 ### 📥 Descarga
-**[📱 APK Release v1.0](AGREGAR_ENLACE_RELEASE)**
+**[📱 APK Release v1.0](https://drive.google.com/file/d/1vouG-oQsP3roBod_9TM8sVJ0tlrZcsWI/view?usp=sharing)**
 
 ---
 
