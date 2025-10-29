@@ -97,7 +97,7 @@ fun RowScope.NavigationTab(
             )
             Text(
                 text = label,
-                fontSize = 11.sp,
+                fontSize = 13.sp,
                 fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
             )
         }
@@ -181,6 +181,13 @@ fun HomeScreen(navController: NavController) {
     val totalStock = productos.sumOf { it.stock }
 
     val productosStockBajo = productos.filter { it.stock < 10 }
+
+    // Cálculo del producto más vendido (acumulado por cantidad)
+    val ventasPorProducto: Map<Int, Int> = ventas.groupBy { it.productoId }
+        .mapValues { entry -> entry.value.sumOf { it.cantidad } }
+    val productoMasVendidoId: Int? = ventasPorProducto.maxByOrNull { it.value }?.key
+    val cantidadMasVendida: Int = productoMasVendidoId?.let { ventasPorProducto[it] } ?: 0
+    val productoMasVendidoNombre: String? = productoMasVendidoId?.let { id -> productos.find { it.id == id }?.nombre }
 
     Scaffold(
         topBar = {
@@ -267,6 +274,64 @@ fun HomeScreen(navController: NavController) {
                             icon = Icons.Default.AttachMoney,
                             iconTint = if (gananciaHoy >= 0) Color(0xFF3B82F6) else Color(0xFFEF4444)
                         )
+                    }
+                }
+            }
+
+            // Tarjeta de Producto más vendido
+            item {
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(containerColor = Color.White),
+                    elevation = CardDefaults.cardElevation(2.dp),
+                    shape = RoundedCornerShape(12.dp)
+                ) {
+                    Column(
+                        modifier = Modifier.padding(20.dp)
+                    ) {
+                        Text(
+                            text = "Producto más vendido",
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Spacer(modifier = Modifier.height(12.dp))
+                        if (productoMasVendidoNombre == null || cantidadMasVendida == 0) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(32.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = "Sin datos suficientes",
+                                    color = Color.Gray,
+                                    style = MaterialTheme.typography.bodyMedium
+                                )
+                            }
+                        } else {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(
+                                        text = productoMasVendidoNombre,
+                                        fontWeight = FontWeight.Medium
+                                    )
+                                    Text(
+                                        text = "Unidades vendidas: $cantidadMasVendida",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = Color.Gray
+                                    )
+                                }
+                                Icon(
+                                    imageVector = Icons.Default.Star,
+                                    contentDescription = null,
+                                    tint = Color(0xFFF59E0B)
+                                )
+                            }
+                        }
                     }
                 }
             }
